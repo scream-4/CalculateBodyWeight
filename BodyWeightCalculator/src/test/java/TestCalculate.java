@@ -18,6 +18,7 @@ public class TestCalculate {
         driver.get(baseUrl);
     }
 
+
     private void InputWeightHeight(String weight, String height) {
         driver.findElement(By.name("wg")).sendKeys(weight);
         driver.findElement(By.name("ht")).sendKeys(height);
