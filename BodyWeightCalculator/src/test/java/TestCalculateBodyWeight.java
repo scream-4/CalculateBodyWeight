@@ -5,21 +5,19 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static java.awt.SystemColor.text;
-
-public class TestCalculate {
+public class TestCalculateBodyWeight {
     WebDriver driver;
     private static final String baseUrl = "https://healthunify.com/bmicalculator/";
 
     @BeforeMethod
-    public void SetUp() {
+    public void setUp() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get(baseUrl);
     }
 
 
-    private void InputWeightHeight(String weight, String height) {
+    private void inputWeightHeight(String weight, String height) {
         driver.findElement(By.name("wg")).sendKeys(weight);
         driver.findElement(By.name("ht")).sendKeys(height);
         driver.findElement(By.cssSelector("[value=Calculate]")).click();
@@ -30,33 +28,33 @@ public class TestCalculate {
     }
 
     @Test
-    public void NormalWeight() {
-        InputWeightHeight("80", "191");
+    public void normalWeight() {
+        inputWeightHeight("80", "191");
         System.out.println(results());
     }
 
     @Test
-    public void UnderWeight() {
-        InputWeightHeight("70", "196");
+    public void underWeight() {
+        inputWeightHeight("70", "196");
         System.out.println(results());
     }
 
     @Test
-    public void Starvation() {
-        InputWeightHeight("55", "200");
+    public void starvation() {
+        inputWeightHeight("55", "200");
         System.out.println(results());
     }
 
     @Test
-    public void Overweight() {
-        InputWeightHeight("90", "180");
+    public void overweight() {
+        inputWeightHeight("90", "180");
         System.out.println(results());
 
     }
 
     @Test
-    public void Obese() {
-        InputWeightHeight("100", "180");
+    public void obese() {
+        inputWeightHeight("100", "180");
         System.out.println(results());
     }
 
